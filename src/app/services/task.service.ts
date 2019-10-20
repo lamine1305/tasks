@@ -7,7 +7,7 @@ import { Task } from '../modules/task';
 })
 export class TaskService {
 apiUrls="http://localhost:3000/tasks";
-chaine=this.apiUrls+"?id='1'";
+
   //Injection du de la classe HttpClient
   constructor(private http : HttpClient) { }
     
@@ -19,10 +19,7 @@ chaine=this.apiUrls+"?id='1'";
 
     deleteTask(id)
     {
-     
-      alert (id);
-      alert (this.chaine);
-      return this.http.delete(this.chaine);
+      return this.http.delete(this.apiUrls+"/"+id);
 
      // return this.http.delete("${this.apiUrl}./${id}");
     }
