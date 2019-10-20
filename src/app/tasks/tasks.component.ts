@@ -18,8 +18,13 @@ export class TasksComponent implements OnInit {
 
   getTasks()
   {
-  alert("salut component");
     this.taskSerive.findAllTasks().subscribe(tasks=>this.tasks=tasks);
   }
 
+  deleteTask(id)
+  {
+    alert(id);
+    this.taskSerive.deleteTask(id).subscribe(()=>{this.tasks= this.tasks.filter(task => task.id != id)} )
+  }
+    
 }

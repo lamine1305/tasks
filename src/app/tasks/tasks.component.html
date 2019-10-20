@@ -31,12 +31,44 @@
  </div>
 </div>
 
-<ul>
-    <li *ngFor="let task of tasks">
-        {{ task.id }}
-        {{ task.label }}
-        {{ task.completed }}
-    </li>
-</ul>
+
+<table class="table table-special">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Libelle</th>
+            <th scope="col">Statut</th>
+            <th scope="col">delete</th>
+            <th scope="col">update</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let task of tasks">
+                <tr>
+                        <th scope="row">{{ task.id }}</th>
+                        <td>{{ task.label }}</td>
+                        <td>
+                    
+                        <span [ngClass]="{'badge-info':task.completed,
+                        'badge-danger':!task.completed
+                        }" class="badge badge-danger badge-pill">
+                    <i class="fa" [ngClass]="{
+                                                'fa-thumbs-up':task.completed,
+                                                'fa-thumbs-down':!task.completed 
+                                            }"> 
+                    </i>
+                </span>
+                </td>
+                <td>    
+                <button class="btn btn-sm dark">
+                        <i class="fa fa-trash"></i></button>
+                </td>
+                <td>    
+                <button (click)="deleteTask(task.id)" class="btn btn-sm yellow">
+                                <i class="fa fa-pencil"></i></button>
+                        </td>
+            </tr>
+             </tbody>
+                  </table>
+
 
 
