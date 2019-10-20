@@ -9,17 +9,17 @@ import { Task } from '../modules/task';
 })
 export class TasksComponent implements OnInit {
 
-  //tasks :Task[]=[];
+     tasks :Task[]=[];
   constructor(private taskSerive:TaskService) { }
 
   ngOnInit() {
-    //this.getTasks()
+    this.getTasks()
   }
 
   getTasks()
   {
-  //  alert("salut component");
-   // this.taskSerive.findAllTasks().subscribe(tasks=>this.tasks=tasks)
+  alert("salut component");
+    this.taskSerive.findAllTasks().subscribe(tasks=>this.tasks=tasks);
   }
 
 }

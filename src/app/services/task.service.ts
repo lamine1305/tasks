@@ -13,8 +13,8 @@ export class TaskService {
 
     findAllTasks()
     {
-      //alert("salut sevice");
-      //return this.http.get<Task[]>("http://localhost:3000/tasks");
+      alert("salut sevice");
+      return this.http.get<Task[]>("http://localhost:3000/tasks");
     }
 
    }
