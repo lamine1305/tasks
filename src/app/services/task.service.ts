@@ -20,8 +20,16 @@ apiUrls="http://localhost:3000/tasks";
     deleteTask(id)
     {
       return this.http.delete(this.apiUrls+"/"+id);
+    }
 
-     // return this.http.delete("${this.apiUrl}./${id}");
+    addTask(task : Task)
+    {
+      return this.http.post<Task>(this.apiUrls,task);
+    }
+
+    changeCompleted(id,completed)
+    {
+      return this.http.patch<Task>(this.apiUrls+"/"+id,{completed : !completed});
     }
    }
   

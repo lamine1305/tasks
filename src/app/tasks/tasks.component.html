@@ -16,19 +16,21 @@
 
       <div class="form-group">
             <label for="label">label</label>
-            <input id="label" type="text" class="form-control">
+            <input  id="label" type="text" class="form-control">
       </div>
 
       <div class="form-check my-2">
           <label class="form-check-label">
-              <input type ="checkbox" class="form-check-input">
+              <input  type ="checkbox" class="form-check-input">
               completed
           </label>
       </div>
-    <button type="button" name="" id="" class="btn btn-success btn-block">
+
+    <button (click)="addTask()" type="button" name="" id="" class="btn btn-success btn-block">
       <i class="fa fa-send"></i>New Task</button>
     
  </div>
+
 </div>
 
 
@@ -48,7 +50,7 @@
                         <td>{{ task.label }}</td>
                         <td>
                     
-                        <span [ngClass]="{'badge-info':task.completed,
+                        <span (click)="changeCompleted(task)" [ngClass]="{'badge-info':task.completed,
                         'badge-danger':!task.completed
                         }" class="badge badge-danger badge-pill">
                     <i class="fa" [ngClass]="{
@@ -59,12 +61,14 @@
                 </span>
                 </td>
                 <td>    
-                <button class="btn btn-sm dark">
-                        <i class="fa fa-trash"></i></button>
+                <button (click)="deleteTask(task.id)"  class="btn btn-sm dark">
+                        <i class="fa fa-trash"></i>
+                </button>
                 </td>
                 <td>    
-                <button (click)="deleteTask(task.id)" class="btn btn-sm yellow">
-                                <i class="fa fa-pencil"></i></button>
+                <button  class="btn btn-sm">
+                                <i class="fa fa-pencil"></i>
+                </button>
                         </td>
             </tr>
              </tbody>

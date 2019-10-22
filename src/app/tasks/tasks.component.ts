@@ -10,6 +10,12 @@ import { Task } from '../modules/task';
 export class TasksComponent implements OnInit {
 
      tasks :Task[]=[];
+
+     newTask : Task={
+       label : 'label 000 ',
+       completed : false
+     }
+
   constructor(private taskSerive:TaskService) { }
 
   ngOnInit() {
@@ -23,8 +29,28 @@ export class TasksComponent implements OnInit {
 
   deleteTask(id)
   {
-    alert(id);
-    this.taskSerive.deleteTask(id).subscribe(()=>{this.tasks= this.tasks.filter(task => task.id != id)} )
+    this.taskSerive.deleteTask(id).
+    subscribe(()=>{this.tasks= this.tasks.filter(task => task.id != id)} )
+  }
+
+  addTask()
+  {
+    alert("ok")
+    this.taskSerive.addTask(this.newTask).
+    subscribe((task)=>{
+                        this.tasks=[task,...this.tasks]
+                      } 
+                      )
+  }
+
+  
+  changeCompleted(task)
+  {
+    this.taskSerive.changeCompleted(task.id,task.completed).
+    subscribe((task)=>{
+                        task.completed = !task.completed
+                      } 
+                      )
   }
     
 }

@@ -1,6 +1,6 @@
 export interface Task {
 
-    id:number;
+    id? : number;
     label : string;
     completed : boolean;
 }
