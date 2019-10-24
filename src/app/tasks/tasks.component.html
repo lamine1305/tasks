@@ -1,7 +1,7 @@
 <div class ="row">
     <div class ="col-md-6">
         <h3>List of tasks</h3>
-   </div>
+    </div>
 
     <div class ="col-md-6 text-right">
         <button class="btn btn-dark btn-sm">
@@ -16,12 +16,17 @@
 
       <div class="form-group">
             <label for="label">label</label>
-            <input  id="label" type="text" class="form-control">
-      </div>
+            <input [(ngModel)]="newTask.label"  id="label" type="text" class="form-control">
+            <div class ="col-md-6 text-right">
+                    <button (click)="searchTask()" class="btn btn-search">
+                    <i class="fa fa-search"></i>Search
+                    </button>
+                </div>            
+        </div>
 
       <div class="form-check my-2">
           <label class="form-check-label">
-              <input  type ="checkbox" class="form-check-input">
+              <input [(ngModel)]="newTask.completed" type ="checkbox" class="form-check-input">
               completed
           </label>
       </div>

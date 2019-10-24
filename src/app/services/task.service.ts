@@ -12,16 +12,16 @@ apiUrls="http://localhost:3000/tasks";
   constructor(private http : HttpClient) { }
     
 
-    findAllTasks()
+    findTaskByLabel(label)
     {
-      return this.http.get<Task[]>(this.apiUrls);
+      return this.http.get(this.apiUrls+"/"+label);
     }
 
     deleteTask(id)
     {
       return this.http.delete(this.apiUrls+"/"+id);
     }
-
+    
     addTask(task : Task)
     {
       return this.http.post<Task>(this.apiUrls,task);
@@ -30,6 +30,12 @@ apiUrls="http://localhost:3000/tasks";
     changeCompleted(id,completed)
     {
       return this.http.patch<Task>(this.apiUrls+"/"+id,{completed : !completed});
+    }
+
+    
+    findAllTasks()
+    {
+      return this.http.get<Task[]>(this.apiUrls);
     }
    }
   

@@ -11,6 +11,8 @@ export class TasksComponent implements OnInit {
 
      tasks :Task[]=[];
 
+     label :String
+     
      newTask : Task={
        label : 'label 000 ',
        completed : false
@@ -35,7 +37,6 @@ export class TasksComponent implements OnInit {
 
   addTask()
   {
-    alert("ok")
     this.taskSerive.addTask(this.newTask).
     subscribe((task)=>{
                         this.tasks=[task,...this.tasks]
@@ -52,5 +53,15 @@ export class TasksComponent implements OnInit {
                       } 
                       )
   }
+getTaskByLabel()
+  {    alert("this.label")
+
+    this.label="cours1"
+    alert(this.label)
+    this.taskSerive.findTaskByLabel(this.label)
+    .subscribe(()=>{this.tasks= this.tasks.filter(task => task.label==this.label)} );
+
+  }
+
     
 }
